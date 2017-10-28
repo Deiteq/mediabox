@@ -45,10 +45,10 @@ fi
 # Create the directory structure
 `mkdir -p content/completed`
 `mkdir -p content/incomplete`
-#`mkdir -p content/movies`
-`mkdir -p /mnt/rclone-move/movies`
-#`mkdir -p content/tv`
-`mkdir -p /mnt/rclone-move/tv`
+`mkdir -p content/movies`
+#`mkdir -p /mnt/rclone-move/movies`
+`mkdir -p content/tv`
+#`mkdir -p /mnt/rclone-move/tv`
 `mkdir -p couchpotato`
 `mkdir -p delugevpn`
 `mkdir -p delugevpn/config/openvpn`
@@ -58,6 +58,7 @@ fi
 `mkdir -p portainer`
 `mkdir -p radarr`
 `mkdir -p sickrage`
+`mkdir -p sabnzbd`
 `mkdir -p www`
 # Move the PIA VPN files
 `mv us-east.ovpn delugevpn/config/openvpn/us-east.ovpn`
