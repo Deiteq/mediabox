@@ -40,6 +40,35 @@ services:
             - '/etc/localtime:/etc/localtime:ro'
     
     # ----------------------------------------
+    # SABNZBD
+    # ----------------------------------------
+    sabnzbd:
+        image:  linuxserver/sabnzbd
+        container_name: sabnzbd
+        restart: always
+        network_mode: "bridge"
+        ports:
+            - '${IP_ADDRESS}:8090:8090'
+        environment:
+            - PUID=${PUID}
+            - PGID=${GUID}
+        volumes:
+      # location of sabtv config - delete this folder if you want to reset SAB completely
+            - ./sabnzbd:/config
+      # no idea if it works, but important for timing
+            - /etc/localtime:/etc/localtime:ro
+      # location where complete files are stored; sonnar scans this directory to upload later
+          #  - /mnt/sabtv/downloads/complete:/complete
+            - /mnt/rclone-move:/complete
+      # location for your temporary storage
+            - /mnt/sab/downloads/incomplete:/incomplete
+      # location where sab keeps backup copies of NZB’s
+            - /mnt/sab/nzb:/nzb
+      # location where sab watches for NZBs provided by Sonnar to start downloading
+           # - /mnt/sabtv/watch:/watch
+            - /mnt/rclone-union:/watch
+    
+    # ----------------------------------------
     # DELUGEVPN
     # ----------------------------------------
     arch-delugevpn:
